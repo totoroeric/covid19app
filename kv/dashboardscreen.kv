@@ -1,0 +1,102 @@
+#:import utils kivy.utils
+
+<DashboardScreen>:
+    BoxLayout:
+        orientation: "vertical"
+        canvas:
+            Color:
+                rgba: utils.get_color_from_hex("#0d1727")
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        #--- start of top bar ---#
+        BoxLayout:
+            orientation: "horizontal"
+            size_hint: (1, 0.03)
+            spacing: '10'
+
+            canvas:
+                Color:
+                    rgba: utils.get_color_from_hex("#121c2e")
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+
+            Spacer:
+                size_hint: (0.75, 1)
+
+            ImageButton:
+                id: minimize_btn_id
+                source: 'icons/arrow-up-circle.png'
+                size_hint: (None, None)
+                height: "25dp"
+                width: "25dp"
+                pos_hint: {"center_y": 0.48}
+                on_release: app.minimize()
+
+            ImageButton:
+                id: close_btn_id
+                source: 'icons/arrow-down-circle.png'
+                size_hint: (None, None)
+                height: "25dp"
+                width: "25dp"
+                pos_hint: {"center_y": 0.45}
+                on_release: app.close()
+            
+            Spacer:
+                size_hint: (0.01, 1)
+        #--- end of top bar ---#
+        Spacer:
+            size_hint: (1, 0.04)
+
+        
+
+        
+        BoxLayout:
+            orientation: "vertical"
+            size_hint: (1, 0.93)
+
+            #--- start of contry search and date bar ---#
+
+            BoxLayout:
+                orientation: "horizontal"
+                size_hint: (1,0.1)
+
+                Label:
+                    text: "Enter country: "
+                    size_hint: (0.15, 0.4)
+                    color: utils.get_color_from_hex("#2b2f43")
+                BoxLayout:
+                    orientation: "vertical"
+                    size_hint: (0.25, 0.4)
+
+                    TextInput:
+                        hint_text: ""
+                        font_size: "15sp"
+                        font_name: "barlow_medium"
+                        size_hint: (1, 0.70)
+                        background_color: 0, 0, 0, 0
+                        foreground_color: 0.8, 0.8, 0.8, 1
+                    BoxLayout:
+                        size_hint: (1, 0.03)
+                        canvas:
+                            Color:
+                                rgba: util.get_color_from_hex("#2a2f44")
+                            Rectangle:
+                                size: self.size
+                                pos: self.pos
+                    Spacer:
+                        size_hint: (1, 0.27)
+                ImageButton:
+                    source: 'icons/go.png'
+                    size_hint: (0.1, 0.4)
+                    allow_stretch: True
+                    keep_aspect: False
+                Spacer:
+                    size: (0.55,1)
+                Label:
+                    id: date_id
+                    text: "Auguest 25, 2020"
+                    size_hint: (0.1, 0.5)
+                    font_size: "15sp"
+                    font_name: "barlow_medium"
